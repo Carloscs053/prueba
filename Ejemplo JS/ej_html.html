@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejemplo Catálogo</title>
+    </head>
+    <body>
+        <form name="form">
+            <header>
+                <div style="text-align: center;">
+                    <h1>Catálogo de Productos</h1>
+                </div>
+            </header>
+            <table style="margin: auto;" border="1">
+                <tr>
+                    <td>
+                        <p>Auriculares inalámbricos</p>
+                        <img src="auriculares.jpg" width="100px" height="100px" />
+                        <p>
+                            24,99€
+                            <input type="checkbox" name="auriculares" id="auriculares" value="24,99">
+                        </p>
+                    </td>
+                    <td>
+                        <p>Teclado Mecánico</p>
+                        <img src="teclado_mecanico.jpg" width="100px" height="100px" />
+                        <p>
+                            49,99€
+                            <input type="checkbox" name="teclado" id="teclado" value="49,99">
+                        </p>
+                    </td>
+                    <td>
+                        <p>WebCam</p>
+                        <img src="webcam.jpg" width="100px" height="100px" />
+                        <p>
+                            19,99€
+                            <input type="checkbox" name="webcam" id="webcam" value="19,99">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Lámpara led</p>
+                        <img src="lampara_led.jpg" width="100px" height="100px" />
+                        <p>
+                            54,95€
+                            <input type="checkbox" name="lampara" id="lampara" value="54,95">
+                        </p>
+                    </td>
+                    <td>
+                        <p>Pulsera inteligente</p>
+                        <img src="pulsera_inteligente.jpg" width="100px" height="100px" />
+                        <p>
+                            12,95€
+                            <input type="checkbox" name="pulsera" id="pulsera" value="12,95">
+                        </p>
+                    </td>
+                    <td>
+                        <p>Disco duro externo</p>
+                        <img src="disco_duro.jpg" width="100px" height="100px" />
+                        <p>
+                            24,99€
+                            <input type="checkbox" name="disco" id="disco" value="24,99">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Router</p>
+                        <img src="router.jpg" width="100px" height="100px" />
+                        <p>
+                            15€
+                            <input type="checkbox" name="router" id="router" value="15">
+                        </p>
+                    </td>
+                    <td>
+                        <p>Gafas VR</p>
+                        <img src="vr.jpg" width="100px" height="100px" />
+                        <p>
+                            349,99€
+                            <input type="checkbox" name="vr" id="vr" value="349,99">
+                        </p>
+                    </td>
+                    <td>
+                        <p>Cargador portátil</p>
+                        <img src="Cargador.jpg" width="100px" height="100px" />
+                        <p>
+                            13,38€
+                            <input type="checkbox" name="cargador" id="cargador" value="13,38">
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <footer style="text-align: center;">
+                <label for="precioIva">Precio sin IVA</label>
+                <input type="radio" name="Iva" id="Iva" value="0.21">
+                <label for="precioIva">Precio con IVA</label>
+                <input type="radio" name="Iva" id="Iva" value="0">
+                <br>
+                <h2 name="mostrarPrecio">x</h2>
+                <input type="button" value="Comprar" id="comprar" onclick="calcularPrecio(this.form)">
+            </footer>
+        </form>
+
+        <script>
+            function calcularPrecio(form) {
+                let precio = 0;
+                if (!form.Iva[0].checked && !form.Iva[1].checked) {
+                    alert("Seleccione una opción");
+                } else {
+                    if (document.getElementById("auriculares").checked) precio += parseFloat(document.getElementById("auriculares").value);
+                    if (document.getElementById("teclado").checked) precio += parseFloat(document.getElementById("teclado").value);
+                    if (document.getElementById("webcam").checked) precio += parseFloat(document.getElementById("webcam").value);
+                    if (document.getElementById("lampara").checked) precio += parseFloat(document.getElementById("lampara").value);
+                    if (document.getElementById("pulsera").checked) precio += parseFloat(document.getElementById("pulsera").value);
+                    if (document.getElementById("disco").checked) precio += parseFloat(document.getElementById("disco").value);
+                    if (document.getElementById("router").checked) precio += parseFloat(document.getElementById("router").value);
+                    if (document.getElementById("vr").checked) precio += parseFloat(document.getElementById("vr").value);
+                    if (document.getElementById("cargador").checked) precio += parseFloat(document.getElementById("cargador").value);
+                    if (form.Iva[0].checked) form.mostrarPrecio.value = precio;
+                    else {
+                        form.mostrarPrecio.value = (precio * 1.21);
+                        console.log(form.mostrarPrecio)
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
